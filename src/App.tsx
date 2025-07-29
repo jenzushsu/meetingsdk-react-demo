@@ -28,14 +28,13 @@ function App() {
       });
       const res = await req.json()
       const signature = res.signature as string;
-      const sdkKey = res.key as string;
-      startMeeting(signature, sdkKey)
+      startMeeting(signature)
     } catch (e) {
       console.log(e);
     }
   };
 
-  function startMeeting(signature: string, sdkKey: string) {
+  function startMeeting(signature: string) {
     document.getElementById("zmmtg-root")!.style.display = "block";
 
     ZoomMtg.init({
