@@ -6,7 +6,6 @@ ZoomMtg.prepareWebSDK();
 
 function App() {
   const authEndpoint = "https://vdd3pg6mla.execute-api.ap-southeast-1.amazonaws.com/latest"; // http://localhost:4000
-  // const sdkKey = "";
   const meetingNumber = "98492174315";
   const passWord = "065567915";
   const role = 1;
@@ -24,6 +23,7 @@ function App() {
         body: JSON.stringify({
           meetingNumber: meetingNumber,
           role: role,
+          webrtc: 1
         }),
       });
       const res = await req.json()
@@ -47,7 +47,6 @@ function App() {
         // can this be async?
         ZoomMtg.join({
           signature: signature,
-          sdkKey: sdkKey,
           meetingNumber: meetingNumber,
           passWord: passWord,
           userName: userName,
