@@ -13,7 +13,7 @@ function App() {
   const userEmail = "";
   const registrantToken = "";
   const zakToken = "";
-  const leaveUrl = "https://jenzushsu.com";
+  const leaveUrl = "https://zoom.com";
 
   const getSignature = async () => {
     try {
