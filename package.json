@@ -1,15 +1,6 @@
 {
   "name": "meetingsdk-react-sample",
   "version": "4.0.0",
-  "author": "Zoom Video Communications, Inc.",
-  "contributors": [
-    {
-      "name": "Tommy Gaessler"
-    },
-    {
-      "name": "EkaanshArora"
-    }
-  ],
   "homepage": "/meetingsdk-react-demo",
   "private": true,
   "type": "module",
