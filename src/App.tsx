@@ -1,15 +1,20 @@
-import "./App.css";
+import { useState } from "react";
+import "./styles/App.css";
 import { ZoomMtg } from "@zoom/meetingsdk";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 ZoomMtg.preLoadWasm();
 ZoomMtg.prepareWebSDK();
 
 function App() {
-  const authEndpoint = "https://vdd3pg6mla.execute-api.ap-southeast-1.amazonaws.com/latest"; // http://localhost:4000
+  // Replace with your actual endpoint
+  const authEndpoint = "https://vdd3pg6mla.execute-api.ap-southeast-1.amazonaws.com/latest";
   const meetingNumber = "98492174315";
   const passWord = "065567915";
-  const role = 0;
-  const userName = "Participant-" + Math.random().toString(36).slice(2, 12); 
+  // State for user inputs
+  const [name, setName] = useState<string>("");
+  const [role, setRole] = useState<number>(0);
+  const [error, setError] = useState<string>("");
   const userEmail = "";
   const registrantToken = "";
   const zakToken = "";
@@ -23,15 +28,26 @@ function App() {
         body: JSON.stringify({
           meetingNumber: meetingNumber,
           role: role,
-          webrtc: 1
+          webrtc: 1,
         }),
       });
-      const res = await req.json()
+      const res = await req.json();
       const signature = res.signature as string;
-      startMeeting(signature)
+      console.log("Signature: ", signature);
+      startMeeting(signature);
     } catch (e) {
       console.log(e);
     }
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!name.trim()) {
+      setError("Name is required");
+      return;
+    }
+    setError("");
+    getSignature();
   };
 
   function startMeeting(signature: string) {
@@ -48,7 +64,7 @@ function App() {
           signature: signature,
           meetingNumber: meetingNumber,
           passWord: passWord,
-          userName: userName,
+          userName: name,
           userEmail: userEmail,
           tk: registrantToken,
           zak: zakToken,
@@ -70,7 +86,31 @@ function App() {
     <div className="App">
       <main>
         <h1>Zoom Meeting SDK Sample React</h1>
-        <button onClick={getSignature}>Join Meeting</button>
+        <div className="container-fluid text-start">
+          <form onSubmit={handleSubmit} noValidate>
+            <div className="mb-3">
+              <label htmlFor="nameInput" className="form-label">
+                Name:
+              </label>
+              <input id="nameInput" type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Enter your name" className="form-control" />
+            </div>
+            {error && <div className="text-danger mb-3">{error}</div>}
+            <div className="mb-3">
+              <label htmlFor="roleSelect" className="form-label">
+                Role:
+              </label>
+              <select id="roleSelect" value={role} onChange={(e) => setRole(Number(e.target.value))} className="form-select">
+                <option value={0}>Participant</option>
+                <option value={1}>Host</option>
+              </select>
+            </div>
+            <div className="mb-3 text-center">
+              <button type="submit" className="btn btn-primary">
+                Join Meeting
+              </button>
+            </div>
+          </form>
+        </div>
       </main>
     </div>
   );
