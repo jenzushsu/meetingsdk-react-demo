@@ -1,7 +1,7 @@
 {
   "name": "meetingsdk-react-sample",
   "version": "4.0.0",
-  "homepage": "/meetingsdk-react-demo",
+  "homepage": "",
   "private": true,
   "type": "module",
   "scripts": {
