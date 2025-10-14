@@ -9,8 +9,8 @@ ZoomMtg.prepareWebSDK();
 function App() {
   // Replace with your actual endpoint
   const authEndpoint = "https://vdd3pg6mla.execute-api.ap-southeast-1.amazonaws.com/latest";
-  const meetingNumber = "98492174315";
-  const passWord = "065567915";
+  const meetingNumber = "99057967915";
+  const passWord = "210751";
   // State for user inputs
   const [name, setName] = useState<string>("");
   const [role, setRole] = useState<number>(0);
@@ -18,7 +18,8 @@ function App() {
   const userEmail = "";
   const registrantToken = "";
   const zakToken = "";
-  const leaveUrl = "https://zoom.com";
+  // const leaveUrl = "https://zoom.com";
+  const leaveUrl = "";
 
   const getSignature = async () => {
     try {
@@ -57,6 +58,7 @@ function App() {
       leaveUrl: leaveUrl,
       patchJsMedia: true,
       leaveOnPageUnload: true,
+      meetingInfo: ["topic", "host"],
       success: (success: unknown) => {
         console.log(success);
         // can this be async?
