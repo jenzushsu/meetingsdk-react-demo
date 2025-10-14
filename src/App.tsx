@@ -87,7 +87,14 @@ function App() {
   return (
     <div className="App">
       <main>
-        <h1>Zoom Meeting SDK Sample React</h1>
+        <h1>
+          Zoom Meeting SDK Sample React{" "}
+          <small>
+            <a href="https://developers.zoom.us/changelog/meeting-sdk/web/4.0.7" target="_blank">
+              (4.0.7)
+            </a>
+          </small>
+        </h1>
         <div className="container-fluid text-start">
           <form onSubmit={handleSubmit} noValidate>
             <div className="mb-3">
