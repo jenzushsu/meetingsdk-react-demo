@@ -58,7 +58,7 @@ function App() {
       leaveUrl: leaveUrl,
       patchJsMedia: true,
       leaveOnPageUnload: true,
-      meetingInfo: ["topic", "host"],
+      meetingInfo: ["topic"],
       disableInvite: true,
       disableRecord: true,
       success: (success: unknown) => {
@@ -90,7 +90,7 @@ function App() {
     <div className="App">
       <main>
         <h1>
-          Zoom Meeting SDK Sample React{" "}
+          Zoom Meeting SDK Sample React
           <small>
             <a href="https://developers.zoom.us/changelog/meeting-sdk/web/4.0.7" target="_blank">
               (4.0.7)
