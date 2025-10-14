@@ -59,6 +59,8 @@ function App() {
       patchJsMedia: true,
       leaveOnPageUnload: true,
       meetingInfo: ["topic", "host"],
+      disableInvite: true,
+      disableRecord: true,
       success: (success: unknown) => {
         console.log(success);
         // can this be async?
